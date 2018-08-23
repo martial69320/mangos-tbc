@@ -13377,6 +13377,10 @@ void Player::RewardQuest(Quest const* pQuest, uint32 reward, Object* questGiver,
 
     // resend quests status directly
     SendQuestGiverStatusMultiple();
+
+#ifdef ENABLE_IMMERSIVE
+    sImmersive.OnRewardQuest(this, pQuest);
+#endif
 }
 
 bool Player::IsQuestExplored(uint32 quest_id) const
